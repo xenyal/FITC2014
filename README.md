@@ -8,9 +8,9 @@ FITC2014
 FITC produces design and technology events worldwide which inspire, educate and challenge attendees. Since 2002, FITC has brought together like-minded professionals and students in Toronto, Amsterdam, Tokyo, San Francisco, Chicago, Seoul, New York, Los Angeles and many other cities. Staying fresh by covering relevant topics in interactive, technical, design and business related content, FITC Events provides the professional development and networking opportunities needed to keep attendees up to date on the rapidly changing industry they work in.
 
 
-## Page Speed: Reduce Network Delays
+## Material Design with AngularJS
 
-#### Context
+#### Context: Page Speed
 - Average worldwide roundtrip time to google is ~100ms
 - Mobile RTT is 100 - 1000ms
 - If cellular radio is idle, add 1000 - 2000ms
@@ -95,4 +95,33 @@ Ensure that the feature is wrapped in a `<noscript>` tag
 #### - Using server side compression:
    Use GZIP on the server
 
-## Second Presentation is hosted [**here**](http://www.codylindley.com/spotlight-front-end)
+## Planning a Front-end JS App is hosted [**here**](http://www.codylindley.com/spotlight-front-end)
+
+## Enemy of the State Presention (3)
+
+#### Server Side Rendering 
+- Can be "Stateless", refreshing causes server side refresh
+- Increase in functonality will gradually increase complexity
+- Horrible for User experience but great for devs
+
+#### DOM & Ajax Libs
+- jQuery, MooTools, Prototype, etc.
+- Manages UI state
+- Renders UI on the server
+
+#### Observer Frameworks
+- Backbone, Angular, Ember, etc.
+- Manages UI state, Data, and code
+- Talks to server via JSON to get data
+- Renders Javascript in response to UI state
+- Stitch components through use of observers
+
+#### One Way Flow Frameworks
+- Flux pattern
+- Manages UI, data, and code
+- Separates UI from data
+- Everything is responsible for one thing:
+	- Example: UI -> Action -> Callbacks -> Change events -> React Views (updates UI)
+
+
+
