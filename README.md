@@ -67,4 +67,32 @@ Paradigm is moving from raster to vectors, that is - going from JPEG/PNG to SVG.
 - Check out [**InstantSprite**](http://instantsprite.com)
 - Connection savings, size spacings
 
+## Loading Order
+- CSS First, Javascript Last!!
+- Javascripts will be in the head will stop further operations and slow your page rendering
+- Something like Google Analytics script is exception to this rule
+
+## Raw Data
+#### - Choose JSON over XML
+#### - JSON is smaller and doesn't require parsing
+#### - XML is human readable but will slow down browser
+
+## Javascript Hangups
+#### - Variables are faster than objects properties and array items
+#### - DOM Operations are slow, so minimize them!
+#### - Searching the DOM is slow, and prone to change
+#### - Change CSS classes and not styles
+
+## Loading UI'
+#### - Avoid spinners or users will kill themselves
+#### - Transitions that distract the eye while data loads (Google card flip lol)
+#### - Framing your content to distract them
+#### - Lazy Image loading:
+As users scroll the page, have javascript load additional images
+Ensure that the feature is wrapped in a `<noscript>` tag
+#### - Responsive Design Patterns
+WURFL.io will detect user device and browser version
+#### - Using server side compression:
+Use GZIP on the server
+
 
