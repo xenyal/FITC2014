@@ -8,7 +8,7 @@ FITC2014
 FITC produces design and technology events worldwide which inspire, educate and challenge attendees. Since 2002, FITC has brought together like-minded professionals and students in Toronto, Amsterdam, Tokyo, San Francisco, Chicago, Seoul, New York, Los Angeles and many other cities. Staying fresh by covering relevant topics in interactive, technical, design and business related content, FITC Events provides the professional development and networking opportunities needed to keep attendees up to date on the rapidly changing industry they work in.
 
 
-## Material Design with AngularJS
+## Presentation 1: Material Design with AngularJS
 
 #### Context: Page Speed
 - Average worldwide roundtrip time to google is ~100ms
@@ -97,7 +97,7 @@ Ensure that the feature is wrapped in a `<noscript>` tag
 
 ## Planning a Front-end JS App is hosted [**here**](http://www.codylindley.com/spotlight-front-end)
 
-## Enemy of the State Presention (3)
+## Presentation 2: Enemy of the State
 
 #### Server Side Rendering 
 - Can be "Stateless", refreshing causes server side refresh
@@ -124,8 +124,8 @@ Ensure that the feature is wrapped in a `<noscript>` tag
 - Everything is responsible for one thing:
 	- Example: UI -> Action -> Callbacks -> Change events -> React Views (Full circle)
 
-## Presentation 4: Javascript Promises
-Is a method that prevents code structure where we have n-th level callback response-requests.
+## Presentation 3: Javascript Promises
+Is a method that prevents code structure where we have `n-th` level callback response-requests. Slides can be found [**here**](http://yto.io/xpromise)
 
 #### Promises look like this:
 
@@ -147,7 +147,75 @@ promise.then(function(response) {
 - Promises: 
    - Things that happen ONCE
    - Same treatment for past and future calls
+   - Easily matched with requests
 - Events (Publish/Sub): 
    - Things that happen MANY TIMES
    - Only cares about future 
+   - Detached from requests
 
+#### Chained Promises are ugly:
+
+```javascript
+$http.get(url)
+.then(function(resp){
+	return response.data;	
+});
+.then(function(tasks) {
+	return filterTasksAsynchronously(tasks);
+});
+.then(function(tasks) {
+	return morestuff(tasks);
+})
+```
+
+#### Here's how to make it better:
+
+```javascript
+var responsePromise = $http.get(url);
+
+var tasksPromise = responsePromise.then(function(resp) {
+	return response.data;
+})
+
+var filteredTasksPromise = tasksPromise.then(function(tasks) {
+	return filterTasksAsynchronously(tasks);
+});
+
+var vmUpdatePromise = filteredTasksPromise.then(function(tasks) {
+	$log.info(tasks);
+	vm.tasks = tasks;
+});
+
+var errorHandlerPromise = vmUpdatePromise.then(null, function(err) {
+	$log.error(error);
+})
+```
+
+#### Axiom: `.then()` Returns a Promise. Always.
+
+```javascript
+var dataPromise = getDataAsync(query);
+var xformedDataPromise = dataPromise
+.then(function(results) {
+	return transformData(results);
+});
+
+// trasnformedDataPromise will be a promise.
+```
+
+| When the callback...  | then `.then()` returns a promise that... |
+| ------------- | ------------- |
+| returns a regular value  | resolves to that value. |
+| returns a promise  | resolves to the same value |
+| throws an exception  | rejects with the exception |
+
+#### Catching Rejections
+
+```javascript
+.then(function(tasks) {
+	$log.info(tasks);
+	vm.tasks = tasks;
+}, function(error) {
+	$log.error(error);
+});
+```
