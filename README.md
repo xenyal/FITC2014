@@ -95,9 +95,9 @@ Ensure that the feature is wrapped in a `<noscript>` tag
 #### - Using server side compression:
    Use GZIP on the server
 
-## Planning a Front-end JS App is hosted [**here**](http://www.codylindley.com/spotlight-front-end)
+## Presentation 2: Planning a Front-end JS App is hosted [**here**](http://www.codylindley.com/spotlight-front-end)
 
-## Presentation 2: Enemy of the State
+## Presentation 3: Enemy of the State
 
 #### Server Side Rendering 
 - Can be "Stateless", refreshing causes server side refresh
@@ -124,8 +124,8 @@ Ensure that the feature is wrapped in a `<noscript>` tag
 - Everything is responsible for one thing:
 	- Example: UI -> Action -> Callbacks -> Change events -> React Views (Full circle)
 
-## Presentation 3: Javascript Promises
-Is a method that prevents code structure where we have `n-th` level callback response-requests. Slides can be found [**here**](http://yto.io/xpromise)
+## Presentation 4: Javascript Promises
+Is a method that prevents code structure where we have `n-th` level callback response-requests. Slides can be found [**here**](http://yto.io/xpromise).
 
 #### Promises look like this:
 
@@ -209,13 +209,114 @@ var xformedDataPromise = dataPromise
 | returns a promise  | resolves to the same value |
 | throws an exception  | rejects with the exception |
 
-#### Catching Rejections
+#### Catching Rejections (The "ehn" way):
 
 ```javascript
 .then(function(tasks) {
-	$log.info(tasks);
+	$log.info(tasks); // If error occurs here, you're fucked LOL.
 	vm.tasks = tasks;
 }, function(error) {
 	$log.error(error);
 });
+```
+
+#### Catching Rejections (Preferred):
+
+```javascript
+$http.get(url)
+	.then(function(resp) {
+		return response.data;
+	})
+	.then(function(tasks) {
+		return filterTasksAsynchronously(tasks);
+	})
+	.then(function(tasks) {
+		$log.info(tasks);
+		vm.tasks = tasks;
+	})
+	.then(null, function(err) {
+		$log.error(error);
+	});
+```
+
+#### Or pass the whole thing:
+
+```javascript
+return $http.get(url)
+	// blah blah
+	.then(function(tasks)) {
+		$log.info(tasks);
+		vm.tasks = tasks;
+	}); // error handling will not be done in this case.
+	    // Simplify the architecture and push issue down the controller.
+```
+
+#### Testing Promises: 
+
+```javascript
+it('should get tasks', function() {
+	var tasks = getService('tasks');
+	//Return a promise
+	return tasks.getTasks()
+		.then(function(tasks){
+			expect(tasks.length).to.equal(1);
+		}); // no ugly done callbacks
+});
+```
+#### Making Promises(Modern):
+I did not record the old school way.
+Preferred way [**here**](github.com/rangle/angular-promisify).
+
+```javascript
+var getFooPromise = denodeify(getFooWithCallbacks); // denodeify is a library
+
+return getFoodPromise()
+	.then(function(result) {
+		// code here;
+	})
+```
+
+#### Do's and Don'ts:
+- Promise chains are considered harmful
+- Stay consistent:
+   - A function that returns a promise should always return a promise and never throw.
+      - Return `$q.reject(error)` instead of throwing.
+      - Wrap non-promise return values in `$q.when()`.
+- When in doubt, return a promise:
+   - If unsure of synchronicity, assume async and return promise.
+- Pass the Buck, But Don't Drop It: 
+   - A function that receives a promise should return a promise, only handling errors that it is prepared to handle.
+   - If you do not return a promise, then gg.
+
+#### Avoid Optimistic Code:
+- Avoid code that assumes that something has already happened.
+   - Instead, ask for a promise, return a promise.
+   - If you do write such code, name your functions to reflect this.
+
+#### Neat Tricks with Promises:
+
+```javascript
+// Promise Caching
+var tasksPromise;
+function getTasks() {
+	taskPromise = taskPromise || getTasksFromServer();
+	return taskPromise;
+}
+
+// Prefetching
+var tasksPromise = getTasksFromServer();
+function getTasks() {
+	return taskPromise;
+}
+
+// Postponing Requests
+function get(path) {
+	return user.waitForAuth();
+	.then(function() {
+		return $http.get(path);
+	})
+	.then(function(response) {
+		return response.data;
+	})
+};
 ```
