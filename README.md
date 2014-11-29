@@ -348,3 +348,8 @@ function evenNumbers(array) {
 }
 ```
 
+## Presentation 6: 
+
+
+
+
