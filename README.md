@@ -64,5 +64,7 @@ Paradigm is moving from raster to vectors, that is - going from JPEG/PNG to SVG.
 </svg>
 ```
 #### Sprites
-- Check out [InstantSprite](http://instantsprite.com)
+- Check out [**InstantSprite**](http://instantsprite.com)
 - Connection savings, size spacings
+
+
