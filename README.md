@@ -50,7 +50,7 @@ Paradigm is moving from raster to vectors, that is - going from JPEG/PNG to SVG.
 - Makes code hella ugly
 ```HTML
 <img alt="" src="Q873847983264W2FJUSWHGFHJSKJASDKJF">
-
+```
 #### JPEG + PNG + SVG = Magic
 - Will save a fuckton of space
 
@@ -62,5 +62,7 @@ Paradigm is moving from raster to vectors, that is - going from JPEG/PNG to SVG.
 		</mask>
 	</def>
 </svg>
-
+```
 #### Sprites
+- Check out [InstantSprite](http://instantsprite.com)
+- Connection savings, size spacings
