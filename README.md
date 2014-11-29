@@ -327,3 +327,24 @@ app.use(function* () {
 	console.log(data.items);
 })
 ```
+
+## Presentation 5: How to Test Front-End the Right Way
+Slides: [**YearOfMoo**](yom.nu/fitc-spotlight-testing-slides)
+Code: [**GitHub**](yom.nu/fitc-spotlight-testing-code)
+
+#### Testing Example:
+
+```javascript
+// Function being tested
+function evenNumbers(array) {
+	var newNumb = [];
+	for (i=0;i<array.length;i++) {
+		var number = array [i];
+		if (number % 2 == 0) {
+			newNumb.push(Number)
+		}
+	}
+	return newNumb;
+}
+```
+
