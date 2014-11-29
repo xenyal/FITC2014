@@ -348,7 +348,11 @@ function evenNumbers(array) {
 }
 ```
 
-## Presentation 6: 
+## Presentation 6: Data Visualization
+- Didn't learn much. Refer to sample files (Run Chrome with --disable-web-security from cmd to run)
+
+## Presentation 7: Material Design with AngularJS 
+Wao.. 10 second slides are op LOL h e l p.......
 
 
 
