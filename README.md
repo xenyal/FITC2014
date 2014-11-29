@@ -118,10 +118,36 @@ Ensure that the feature is wrapped in a `<noscript>` tag
 
 #### One Way Flow Frameworks
 - Flux pattern
+- Framework that is widely used that demonstrates this is ReactJS
 - Manages UI, data, and code
 - Separates UI from data
 - Everything is responsible for one thing:
-	- Example: UI -> Action -> Callbacks -> Change events -> React Views (updates UI)
+	- Example: UI -> Action -> Callbacks -> Change events -> React Views (Full circle)
 
+## Presentation 4: Javascript Promises
+Is a method that prevents code structure where we have n-th level callback response-requests.
 
+#### Promises look like this:
+
+```javascript
+var promise = $http.get(url);
+// add a handler somewhere else
+
+promise.then(function(response) {
+	// handle the response
+});
+
+promise.then(function(response) {
+	// handle the same response again
+});
+```
+
+#### Promises vs Events:
+(For cases when promises aren't the answer)
+- Promises: 
+   - Things that happen ONCE
+   - Same treatment for past and future calls
+- Events (Publish/Sub): 
+   - Things that happen MANY TIMES
+   - Only cares about future 
 
