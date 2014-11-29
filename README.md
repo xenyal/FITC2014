@@ -353,6 +353,10 @@ function evenNumbers(array) {
 
 ## Presentation 7: Material Design with AngularJS 
 Wao.. 10 second slides are op LOL h e l p.......
+You can find the link to the slides [**here**](http://zndg.tl/zen-material)
+
+And the link to the code [**here**]() .. Link to be updated.
+
 
 
 
