@@ -88,11 +88,11 @@ Paradigm is moving from raster to vectors, that is - going from JPEG/PNG to SVG.
 #### - Transitions that distract the eye while data loads (Google card flip lol)
 #### - Framing your content to distract them
 #### - Lazy Image loading:
-As users scroll the page, have javascript load additional images.
+   As users scroll the page, have javascript load additional images.
 Ensure that the feature is wrapped in a `<noscript>` tag
 #### - Responsive Design Patterns
-WURFL.io will detect user device and browser version
+   WURFL.io will detect user device and browser version
 #### - Using server side compression:
-Use GZIP on the server
+   Use GZIP on the server
 
 
