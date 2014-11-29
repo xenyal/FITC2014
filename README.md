@@ -12,8 +12,8 @@ FITC produces design and technology events worldwide which inspire, educate and 
 
 #### Context
 - Average worldwide roundtrip time to google is ~100ms
-- Mobile RTT is 100-1000ms
-- If cellular radio is idle, add 1000-2000ms
+- Mobile RTT is 100 - 1000ms
+- If cellular radio is idle, add 1000 - 2000ms
 
 #### Concurrent Connection Limits
 - Maximum connections to one server/proxy: Less than 10
@@ -95,4 +95,4 @@ Ensure that the feature is wrapped in a `<noscript>` tag
 #### - Using server side compression:
    Use GZIP on the server
 
-
+## Second Presentation is hosted [**here**](http://www.codylindley.com/spotlight-front-end)
