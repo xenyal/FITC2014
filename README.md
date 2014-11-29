@@ -318,5 +318,12 @@ function get(path) {
 	.then(function(response) {
 		return response.data;
 	})
-};
+}; // Will wait until user finished authentication and then and only then load respData
+
+// ES6 KoaStyle Generator
+app.use(function* () {
+	var data = yield getPromiseForData();
+	// Proceed to use data
+	console.log(data.items);
+})
 ```
