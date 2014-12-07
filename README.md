@@ -329,8 +329,8 @@ app.use(function* () {
 ```
 
 ## Presentation 5: How to Test Front-End the Right Way
-Slides: [**YearOfMoo**](yom.nu/fitc-spotlight-testing-slides)
-Code: [**GitHub**](yom.nu/fitc-spotlight-testing-code)
+Slides: [**YearOfMoo**](http://slides.yearofmoo.com/fitc-spotlight-front-end-testing/index.html#/0/0/)
+Code: [**GitHub**](https://github.com/yearofmoo/fitc-front-end-spotlight-testing)
 
 #### Testing Example:
 
